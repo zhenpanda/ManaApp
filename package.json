@@ -1,0 +1,24 @@
+{
+  "name": "manabasehelper",
+  "version": "1.0.0",
+  "description": "M.E.A.N App to help with building limited magic mana base",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhenpanda/manabasehelper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhenpanda/manabasehelper/issues"
+  },
+  "homepage": "https://github.com/zhenpanda/manabasehelper#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.4"
+  }
+}
