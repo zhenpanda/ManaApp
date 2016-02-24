@@ -17,5 +17,3 @@ db.name.find().pretty()
 db.creatCollection('customers')
 use customers
 switched to db customers
-
-
