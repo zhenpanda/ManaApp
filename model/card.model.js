@@ -3,13 +3,13 @@
 var mongoose = require('mongoose');
 //set mongoose schema
 
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-var BookSchema = new Schema({
-	title: String,
-	author: String,
-	category: String
-});
+// var BookSchema = new Schema({
+// 	title: String,
+// 	author: String,
+// 	category: String
+// });
 
 // var BookSchema = new Schema({
 // 	title: String,
