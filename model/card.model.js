@@ -34,4 +34,4 @@ var mongoose = require('mongoose');
 /* Create the format for Card object Schema */
 
 //export pass in schema
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mongoose.model('Card', CardSchema);
