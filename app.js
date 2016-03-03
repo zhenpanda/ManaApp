@@ -3,6 +3,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Book = require('./model/book.model')
+var mtgjson = require('mtgjson');
+ 
+
 
 //Mongoose Connect
 var db = 'mongodb://localhost/manabasehelper';
@@ -12,7 +15,16 @@ app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-	res.send("harro world");
+	mtgjson(function(err, data) {
+		if (err) return console.log(err);
+	 
+		// Prints out all cards from the Limited Edition Alpha (LEA) set 
+		//console.log(data.OGW.cards); 
+
+		var ogw = data.OGW.cards;
+		console.log(ogw[0]);
+	});
+	//res.send("harro world");
 });
 
 app.get('/check', function(req, res) {
