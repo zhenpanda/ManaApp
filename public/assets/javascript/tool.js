@@ -6,10 +6,10 @@ $(document).ready(function() {
 
     //ajax get news data function
     var populate = function() {
-        // jQuery AJAX call for JSON
+        // jQuery AJAX call for mtg cards JSON
         $.getJSON('/fetch', function(data) {
             cardData = data;
-            console.log("gotem new");
+            console.log("gotem new card data");
 
         }).done(function() {
             // running clickBox functions
@@ -29,9 +29,27 @@ $(document).ready(function() {
         for (var c = 0; c < cardData.length; c++) {
             cardsAry.push(cardData[c].name);
         };
+        //load in cards
         $("#tags").autocomplete({
             source: cardsAry
-        })  
+        });
+
+        //hit enter event
+        $("#tags").bind("enterKey",function(e) {
+           //do stuff here
+           console.log(e)
+        });
+        $("#tags").keyup(function(e) {
+            if(e.keyCode == 13) {
+                //$(this).trigger("enterKey");
+                console.log("you hit enter!");
+                //var boxText = ;
+                console.log( $("#tags").val() );
+
+                $("#tags").val('');
+            }
+        });
+
     };
 
     //get the card data
