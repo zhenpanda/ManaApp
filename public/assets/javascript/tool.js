@@ -3,14 +3,12 @@ $(document).ready(function() {
     console.log('mbhelper');
     //put data in here
     var cardData;
-
     //ajax get news data function
     var populate = function() {
         // jQuery AJAX call for mtg cards JSON
         $.getJSON('/fetch', function(data) {
             cardData = data;
-            console.log("gotem new card data");
-
+            //console.log(cardData, "gotem new card data");
         }).done(function() {
             // running clickBox functions
             insert();
@@ -18,17 +16,13 @@ $(document).ready(function() {
     }
 
     var insert = function() {
-        /*
         //testing tags
-        var availableTags = [
-            "ActionScript",
-            "AppleScript"
-        ];
-        */
+        //var availableTags = ["ActionScript"];
         var cardsAry = [];
         for (var c = 0; c < cardData.length; c++) {
             cardsAry.push(cardData[c].name);
         };
+
         //load in cards
         $("#tags").autocomplete({
             source: cardsAry
@@ -43,16 +37,27 @@ $(document).ready(function() {
             if(e.keyCode == 13) {
                 //$(this).trigger("enterKey");
                 console.log("you hit enter!");
-                //var boxText = ;
-                console.log( $("#tags").val() );
+                console.log($("#tags").val());
+
+                //check if elemnt in html exists
+                if ($("#card-info").length > 0) {
+                    console.log("this is the card's basic info");                
+                    // var cardDiv = $("<div class='cards'>");
+                    // cardDiv.text($("#tags").val());
+                    // $("#cards-area").append(cardDiv);
+
+                    //calling create form func
+                    createForm($("#tags").val(), cardData);
+                }
 
                 $("#tags").val('');
             }
         });
-
     };
 
-    //get the card data
+
+
+    //get the card data from mtg json
     populate();
 
 });

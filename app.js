@@ -3,15 +3,13 @@ var path = require('path');
 var app = express();
 
 var bodyParser = require('body-parser');
-/*
-//Mongoose Connect
+
+/*Mongoose Connect*/
+var mongoose = require('mongoose');
 var db = 'mongodb://localhost/testDB';
 mongoose.connect(db);
 
-var User = require('./model/user').User;
-var Item = require('./model/item').Item;
-var Comment = require('./model/comment').Comment;
-*/
+//var Card = require('./model/card').Card;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -30,7 +28,12 @@ app.use(bodyParser.urlencoded({
 var mtgjson = require('mtgjson');
 
 app.get('/', function(req, res) {
-	res.render('index');
+	res
+	.render('index');
+});
+
+app.get('/edit', function(req, res) {
+	res.render('edit');
 });
 
 app.get('/fetch', function(req, res) {
@@ -49,18 +52,23 @@ app.get('/fetch', function(req, res) {
 	//res.send("harro world");
 });
 
-/*
-app.get('/check', function(req, res) {
-	Book.find({}).exec(function(err, result) {
-		if(err) {
-			res.send('error here.')
-		}else{
-			res.json(result);
-		}
-	})
-});*/
+app.get('/note', function(req, res) {
+
+    // var card1 = new Card({
+	   //  cardName: String,
+	   //  set: String,
+	   //  powerRating: Number,
+	   //  comments: [{
+	   //      type: 'string'
+	   //  }]
+    // });
+    // item1.save(function(err) {
+    //     if (err) return (err);
+    // });
+
+});
 
 var port = 3000;
 app.listen(port, function() {
-	console.log("listenin on port:" + port);
+	console.log("listenin on port:" + port + " captain!");
 })
