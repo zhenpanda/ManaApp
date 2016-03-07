@@ -39,19 +39,22 @@ $(document).ready(function() {
                 console.log("you hit enter!");
                 console.log($("#tags").val());
 
-                //check if elemnt in html exists to load in func for the page
+                //check if element in html exists to load in func
                 if ($("#card-info").length > 0) {
                     console.log("this is the card's basic info");                
+                    //call createForm func with input
+                    createForm($("#tags").val(), cardData);
+                //check fi element in html exists to load in func
+                } else if ($("#deck-info").length > 0) {
+                    console.log("this is the deck archive page");
+                    //call deckForm func with input
+                    deckForm($("#tags").val());                 
+                };
 
-                    //calling createForm func
-                    createForm($("#tags").val(), cardData); 
-                }
                 $("#tags").val('');
             }
         });
     };
-
-
 
     //get the card data from mtg json
     populate();

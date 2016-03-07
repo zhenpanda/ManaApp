@@ -6,10 +6,43 @@
 			<hr>
 
 			<div class="ui-widget">
-			    <label for="tags" class="show-text">Search Card Name: </label>
+			    <label for="tags" class="show-text">
+			    	Search Card Name: 
+			    </label>
+			    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			    <input id="tags" class="seach-card">
 			</div>
 
+			<div id="deck-area">
+				<div id="deck-info">
+
+				</div>
+			</div>
+			<hr>
+
+			<p class="cards-count">Cards in deck: 
+				<p class="cards-count">0</p>
+			</p>
+			<hr>
+
+		    <div id="deck-box">
+			  	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+			    <label class="col-sm-2 control-label">Deck Creator:</label>
+			    <input class="col-sm-10 form-control" id="deck-creator" placeholder="">
+
+				<label class="sr-only" for="inputDeckNotes">Input with help text</label>
+				<span id="helpBlock" class="help-block">
+					<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+					Notes.
+				</span>
+				<input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock">
+
+			    <div id="gap"></div>
+			    
+			  	<button type="submit" class="btn btn-primary">			    
+			  		<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> [ Archive Deck ]
+			  	</button>
+		    </div>
 	</div>
 
 </div>

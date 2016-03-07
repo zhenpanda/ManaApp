@@ -22,16 +22,26 @@ var createForm = function (inputCardName, cardData) {
 	};
 };*/
 
-var deckForm = function() {
+/*
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+*/
+
+var deckForm = function(inputCardName) {
 	console.log("This is creating a deck!");
+	console.log("added card: " + inputCardName);
 
 	// buttons on each magnet to remove cards and add mulitple copies
+	// dom checker showing how many cards been added total (use dom to keep count)
+
 	/*
 	Send deck data to mongodb:
 		- array of cards put into the deck, spells and lands
 		- deck creator name
-		- deck type (seal/ team sealed/ draft)
+		- comment
 		- record (win/lost/draw)
-		
 	*/
+
+
 };
+

@@ -16,13 +16,32 @@
 	width: 450px;
 }
 #submit-box {
-	margin: auto;
 	width: 445px;	
-	color: black;
+	color: DarkCyan;
 }
 #inputPower {
 	width: 150px;
 }
 .wCard{
 	background-color: PapayaWhip;
+}
+
+/* Deck page */
+#deck-page {
+	background-color: LightSeaGreen;
+	height: 1599px;	
+}
+#deck-box {
+	width: 150px;	
+	color: Cornsilk;
+	margin: 5px;
+}
+#inputDeckNotes {
+	width: 200px;
+}
+.cards-count{
+	display: inline-block;
+}
+#gap {
+	height: 6px;
 }
