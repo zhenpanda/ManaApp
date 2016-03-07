@@ -39,17 +39,13 @@ $(document).ready(function() {
                 console.log("you hit enter!");
                 console.log($("#tags").val());
 
-                //check if elemnt in html exists
+                //check if elemnt in html exists to load in func for the page
                 if ($("#card-info").length > 0) {
                     console.log("this is the card's basic info");                
-                    // var cardDiv = $("<div class='cards'>");
-                    // cardDiv.text($("#tags").val());
-                    // $("#cards-area").append(cardDiv);
 
-                    //calling create form func
-                    createForm($("#tags").val(), cardData);
+                    //calling createForm func
+                    createForm($("#tags").val(), cardData); 
                 }
-
                 $("#tags").val('');
             }
         });
@@ -59,5 +55,7 @@ $(document).ready(function() {
 
     //get the card data from mtg json
     populate();
+    //hide cards at the start of page    
+    $("#card-info").hide();
 
 });

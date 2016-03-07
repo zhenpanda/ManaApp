@@ -27,13 +27,18 @@ app.use(bodyParser.urlencoded({
 
 var mtgjson = require('mtgjson');
 
+//home test page
 app.get('/', function(req, res) {
 	res
 	.render('index');
 });
-
+//edit cards page 
 app.get('/edit', function(req, res) {
 	res.render('edit');
+});
+//save deck page
+app.get('/deck', function(req, res) {
+	res.render('deck');
 });
 
 app.get('/fetch', function(req, res) {
@@ -44,8 +49,11 @@ app.get('/fetch', function(req, res) {
 		//console.log(data.OGW.cards); 
 
 		var ogw = data.OGW.cards;
+		var bfz = data.BFZ.cards;
+		var block = ogw.concat(bfz);
+
 		//res.send(ogw[0].name);
-		res.json(ogw);
+		res.json(block);
 		// var count = String(ogw.length);
 		// res.send(count);
 	});

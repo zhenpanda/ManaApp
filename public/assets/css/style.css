@@ -1,0 +1,28 @@
+/* Edit Card page */
+#edit-page{
+	background-color: DimGrey;
+	height: 1599px;
+}
+.show-text {
+	color: AntiqueWhite;
+}
+#seach-card {
+	color: MidnightBlue;
+}
+.form-horizontal {
+	padding: 5px;
+}
+#card-info {
+	width: 450px;
+}
+#submit-box {
+	margin: auto;
+	width: 445px;	
+	color: black;
+}
+#inputPower {
+	width: 150px;
+}
+.wCard{
+	background-color: PapayaWhip;
+}
