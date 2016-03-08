@@ -31,7 +31,7 @@ var cardSchema = new Schema({
     setName: String,
     powerRating: Number,
     comments: [{
-        type: 'string'
+        type: String
     }]
 });
 
