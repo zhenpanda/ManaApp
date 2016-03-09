@@ -28,8 +28,8 @@ var createForm = function (inputCardName, cardData) {
 */
 
 var deckForm = function(inputCardName) {
-	console.log("This is creating a deck!");
-	console.log("added card: " + inputCardName);
+	//console.log("This is creating a deck!");
+	//console.log("added card: " + inputCardName);
 
 	// buttons on each magnet to remove cards and add mulitple copies
 	// dom checker showing how many cards been added total (use dom to keep count)
@@ -42,6 +42,14 @@ var deckForm = function(inputCardName) {
 		- record (win/lost/draw)
 	*/
 
+	var el = $('<div class="card">' + inputCardName + ' x 1 </div>');
+	$("#deck-info").append(el);
 
+	$( el ).on( "click", function() {
+		$( this ).remove();
+	});
+
+	var myCards = $( ".card" );
+	console.log(myCards.length);
 };
 
