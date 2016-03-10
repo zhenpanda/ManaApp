@@ -27,6 +27,7 @@ var Schema = mongoose.Schema;
 */
 
 var cardSchema = new Schema({
+    dateTime: String,
     cardName: String,
     setName: String,
     powerRating: Number,

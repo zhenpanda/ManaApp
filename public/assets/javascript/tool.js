@@ -59,23 +59,14 @@ $(document).ready(function() {
         });
     };
 
-    var saveDeck = function() {
-        $( "#sendDeck" ).on( "click", function() {
-            var myDeck = $( ".card" );
-            var myCards = [];
-            for (var c = 0; c < myDeck.length; c++) {
-                myCards.push(myDeck[c].innerHTML);
-            };
-            console.log(myCards);
-        });
-        
-    };
-
     //get the card data from mtg json
     populate();
-    //build on click
-    saveDeck();
     //hide cards at the start of page    
     $("#card-info").hide();
 
+    //build on click
+    saveDeck();
+    //test stuff
+    var myDate = makeDate();
+    console.log("Todays date:", myDate);
 });

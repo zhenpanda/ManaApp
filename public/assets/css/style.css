@@ -1,3 +1,9 @@
+/* General stuff */
+.space {
+	height: 5px;
+	margin: 1px;
+}
+
 /* Edit Card page */
 #edit-page{
 	background-color: DimGrey;

@@ -51,7 +51,32 @@ var deckForm = function(inputCardName) {
 
 	var myCards = $( ".card" );
 	//console.log(myCards.length);
-
-
 };
 
+//click event func when Archive Deck button is hit
+var saveDeck = function() {
+    $( "#sendDeck" ).on( "click", function() {
+        var myDeck = $( ".card" );
+        var myCards = [];
+        for (var c = 0; c < myDeck.length; c++) {
+            myCards.push(myDeck[c].innerHTML);
+        };
+        console.log(myCards, "deck list array.");
+
+        //grab input info creator
+        var creator = $( "#deck-creator").val();
+        console.log(creator, "created this deck");
+        $( "#deck-creator").val('');
+
+        //grab deck name
+        var deckName = $( "#deck-name").val();
+        console.log(deckName, "created this deck");
+        $( "#deck-name").val('');
+
+        //grab inputn notes
+        var notes = $( "#inputDeckNotes").val();
+        console.log(notes, "deck related notes.");
+        $( "#inputDeckNotes").val('');
+        
+    });
+};

@@ -9,7 +9,8 @@ var mongoose = require('mongoose');
 var db = 'mongodb://localhost/testDB';
 mongoose.connect(db);
 
-//var Card = require('./model/card').Card;
+var Card = require('./model/card').Card;
+var Deck = require('./model/deck').Deck;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -61,7 +62,6 @@ app.get('/fetch', function(req, res) {
 });
 
 app.get('/note', function(req, res) {
-
     // var card1 = new Card({
 	   //  cardName: String,
 	   //  set: String,
