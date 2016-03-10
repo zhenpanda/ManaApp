@@ -26,6 +26,14 @@
 	background-color: PapayaWhip;
 }
 
+.card{
+    border-style: solid;
+    border-width: 1px;
+    width: 140px;
+    color: PapayaWhip;
+    padding: 2px;
+    margin: 1px;
+}
 /* Deck page */
 #deck-page {
 	background-color: LightSeaGreen;

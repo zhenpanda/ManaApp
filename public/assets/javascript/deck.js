@@ -42,14 +42,16 @@ var deckForm = function(inputCardName) {
 		- record (win/lost/draw)
 	*/
 
-	var el = $('<div class="card">' + inputCardName + ' x 1 </div>');
+	var el = $('<div class="card">'+inputCardName+'</div>');
 	$("#deck-info").append(el);
-
+	//cards can be removed by clicking on to them
 	$( el ).on( "click", function() {
 		$( this ).remove();
 	});
 
 	var myCards = $( ".card" );
-	console.log(myCards.length);
+	//console.log(myCards.length);
+
+
 };
 

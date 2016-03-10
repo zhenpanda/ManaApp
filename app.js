@@ -73,7 +73,10 @@ app.get('/note', function(req, res) {
     // item1.save(function(err) {
     //     if (err) return (err);
     // });
+});
 
+app.post('/save', function(req, res) {
+	console.log(req.body);
 });
 
 var port = 3000;

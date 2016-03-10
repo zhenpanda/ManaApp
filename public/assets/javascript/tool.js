@@ -15,6 +15,7 @@ $(document).ready(function() {
         });
     }
 
+    //get cards from mongodb store it in DOM
     var insert = function() {
         //testing tags
         //var availableTags = ["ActionScript"];
@@ -28,7 +29,7 @@ $(document).ready(function() {
             source: cardsAry
         });
 
-        //hit enter event
+        //add click event different for each page
         $("#tags").bind("enterKey",function(e) {
            //do stuff here
            console.log(e)
@@ -36,28 +37,44 @@ $(document).ready(function() {
         $("#tags").keyup(function(e) {
             if(e.keyCode == 13) {
                 //$(this).trigger("enterKey");
-                console.log("you hit enter!");
-                console.log($("#tags").val());
+                //console.log("you hit enter!");
+                //console.log($("#tags").val());
 
                 //check if element in html exists to load in func
                 if ($("#card-info").length > 0) {
-                    console.log("this is the card's basic info");                
+                    //console.log("this is the card's basic info");                
                     //call createForm func with input
                     createForm($("#tags").val(), cardData);
-                //check fi element in html exists to load in func
-                } else if ($("#deck-info").length > 0) {
-                    console.log("this is the deck archive page");
-                    //call deckForm func with input
-                    deckForm($("#tags").val());                 
-                };
 
+                //check if element in html exists to load in func
+                } else if ($("#deck-info").length > 0) {
+                    //console.log("this is the deck archive page");
+
+                    //call deckForm func with input of entered card
+                    deckForm($("#tags").val());                 
+                    
+                };
                 $("#tags").val('');
             }
         });
     };
 
+    var saveDeck = function() {
+        $( "#sendDeck" ).on( "click", function() {
+            var myDeck = $( ".card" );
+            var myCards = [];
+            for (var c = 0; c < myDeck.length; c++) {
+                myCards.push(myDeck[c].innerHTML);
+            };
+            console.log(myCards);
+        });
+        
+    };
+
     //get the card data from mtg json
     populate();
+    //build on click
+    saveDeck();
     //hide cards at the start of page    
     $("#card-info").hide();
 
