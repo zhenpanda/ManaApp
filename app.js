@@ -61,22 +61,23 @@ app.get('/fetch', function(req, res) {
 	//res.send("harro world");
 });
 
-app.get('/note', function(req, res) {
-    // var card1 = new Card({
-	   //  cardName: String,
-	   //  set: String,
-	   //  powerRating: Number,
-	   //  comments: [{
-	   //      type: 'string'
-	   //  }]
-    // });
-    // item1.save(function(err) {
-    //     if (err) return (err);
-    // });
-});
+// app.get('/note', function(req, res) {
+// });
 
 app.post('/save', function(req, res) {
-	console.log(req.body);
+	//console.log(req.body);
+	//console.log(req.body['deckList[]']);
+    var newDeck = new Deck({
+	    dateTime: req.body.date,
+	    deckName: req.body.name,
+	    notes: req.body.note,
+	    deckList: req.body['deckList[]'],
+	    creator: req.body.maker
+    });
+    newDeck.save(function(err) {
+        if (err) return (err)
+        res.send("done");
+    });
 });
 
 var port = 3000;

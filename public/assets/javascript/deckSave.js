@@ -74,9 +74,29 @@ var saveDeck = function() {
         $( "#deck-name").val('');
 
         //grab inputn notes
-        var notes = $( "#inputDeckNotes").val();
-        console.log(notes, "deck related notes.");
+        var deckNotes = $( "#inputDeckNotes").val();
+        console.log(deckNotes, "deck related notes.");
         $( "#inputDeckNotes").val('');
         
+        //date 
+        var creationDate = makeDate();
+
+        //send data
+        var dataPack = {
+        	deckList:myCards,
+        	maker:creator,
+        	name:deckName,
+        	note:deckNotes,
+        	date:creationDate
+        };
+        console.log(dataPack);
+        
+        //post data
+		$.ajax({
+		  type: "POST",
+		  url: "/save",
+		  data: dataPack
+		});
+
     });
 };

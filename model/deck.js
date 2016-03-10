@@ -4,10 +4,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var deckSchema = new Schema({
+    creator: String,
     dateTime: String,
     deckName: String,
     notes: String,
-    cards: [{
+    deckList: [{
         type: String
     }],
     wins: Number,
