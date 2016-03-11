@@ -16,24 +16,32 @@
 */
 
 var createForm = function (inputCardName, cardData) {
-	console.log("This is creating a form!");
-	console.log("For card: " + inputCardName);
-	for (var e = 0; e < cardData.length; e++) {
-		if (cardData[e].name == inputCardName) {
-			//console.log(cardData[e]);
+	// console.log("This is creating a form!");
+	// console.log("For card: " + inputCardName);
+	
+	var el = $('<div class="card">'+inputCardName+'</div>');
+	$("#check-cards").append(el);
+	//cards can be removed by clicking on to them
+	// $( el ).on( "click", function() {
+	// 	$( this ).remove();
+	// });
+
+	// for (var e = 0; e < cardData.length; e++) {
+	// 	if (cardData[e].name == inputCardName) {
+	// 		//console.log(cardData[e]);
 				
-			//show the card
-			$("#card-info").show();
+	// 		//show the card
+	// 		$("#card-info").show();
 
-			if ( cardData[e].colors ) {
-			    //Do this
-				if (cardData[e].colors[0] == "White") {
-					$( "#card-info" ).addClass( "wCard" );
-				};
-			}else{
-				console.log("is colorless")
-			};
+	// 		if ( cardData[e].colors ) {
+	// 		    //Do this
+	// 			if (cardData[e].colors[0] == "White") {
+	// 				$( "#card-info" ).addClass( "wCard" );
+	// 			};
+	// 		}else{
+	// 			console.log("is colorless")
+	// 		};
 
-		};
-	};
+	// 	};
+	// };
 };

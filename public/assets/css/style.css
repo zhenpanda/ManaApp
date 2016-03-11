@@ -3,7 +3,6 @@
 	height: 5px;
 	margin: 1px;
 }
-
 /* Edit Card page */
 #edit-page{
 	background-color: DimGrey;
@@ -58,4 +57,11 @@
 }
 #gap {
 	height: 6px;
+}
+#notes-style {
+	color: darkslategray;
+}
+
+#check-cards {
+	height: 1000px;
 }

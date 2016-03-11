@@ -27,6 +27,7 @@ var createForm = function (inputCardName, cardData) {
 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 */
 
+//
 var deckForm = function(inputCardName) {
 	//console.log("This is creating a deck!");
 	//console.log("added card: " + inputCardName);
@@ -90,7 +91,7 @@ var saveDeck = function() {
         	date:creationDate
         };
         console.log(dataPack);
-        
+
         //post data
 		$.ajax({
 		  type: "POST",

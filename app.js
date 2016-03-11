@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 /*Mongoose Connect*/
 var mongoose = require('mongoose');
-var db = 'mongodb://localhost/testDB';
+var db = 'mongodb://localhost/sealedDB';
 mongoose.connect(db);
 
 var Card = require('./model/card').Card;
@@ -78,6 +78,17 @@ app.post('/save', function(req, res) {
         if (err) return (err)
         res.send("done");
     });
+});
+
+//find by date
+app.get('/findDate', function(req, res) {
+    Deck
+        .find({"dateTime": "3_10_2016"})
+        .exec(function(err, doc) {
+            if (err) return (err);
+            console.log(doc.length);
+            res.send("gotem");
+        });
 });
 
 var port = 3000;
