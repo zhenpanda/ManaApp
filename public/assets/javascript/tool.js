@@ -70,4 +70,7 @@ $(document).ready(function() {
     //test stuff
     var myDate = makeDate();
     console.log("Todays date:", myDate);
+
+    //get deck form db
+    read();
 });

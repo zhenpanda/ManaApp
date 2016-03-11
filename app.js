@@ -91,6 +91,18 @@ app.get('/findDate', function(req, res) {
         });
 });
 
+//find deck all from db 
+app.get('/readDeck', function(req, res) {
+    Deck
+        .find()
+        .exec(function(err, doc) {
+            if (err) return (err);
+            console.log(doc.length);
+            res.json(doc);
+        });
+});
+
+
 var port = 3000;
 app.listen(port, function() {
 	console.log("listenin on port:" + port + " captain!");
