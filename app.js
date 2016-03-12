@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 /*Mongoose Connect*/
 var mongoose = require('mongoose');
 var db = 'mongodb://localhost/sealedDB';
+//var db = 'mongodb://localhost/testDB';
+
 mongoose.connect(db);
 
 var Card = require('./model/card').Card;
@@ -93,11 +95,12 @@ app.get('/findDate', function(req, res) {
 
 //find deck all from db 
 app.get('/readDeck', function(req, res) {
+	var thurs = "3_10_2016";
     Deck
-        .find()
+        .find({"dateTime": thurs})
         .exec(function(err, doc) {
             if (err) return (err);
-            console.log(doc.length);
+            console.log(doc.length, "number of decks found!");
             res.json(doc);
         });
 });
