@@ -11,6 +11,14 @@ var db = 'mongodb://localhost/sealedDB';
 
 mongoose.connect(db);
 
+// scrape web
+var Xray = require('x-ray');
+var x = Xray();
+var url = "http://www.cubetutor.com/viewcube/25384";
+x(url, '.columnTitle')(function(err, c) {
+  console.log(c)
+});
+
 var Card = require('./model/card').Card;
 var Deck = require('./model/deck').Deck;
 
@@ -35,7 +43,7 @@ app.get('/', function(req, res) {
 	res
 	.render('index');
 });
-//edit cards page 
+//edit cards page
 app.get('/edit', function(req, res) {
 	res.render('edit');
 });
@@ -47,9 +55,9 @@ app.get('/deck', function(req, res) {
 app.get('/fetch', function(req, res) {
 	mtgjson(function(err, data) {
 		if (err) return console.log(err);
-	 
-		// Prints out all cards from the Limited Edition Alpha (LEA) set 
-		//console.log(data.OGW.cards); 
+
+		// Prints out all cards from the Limited Edition Alpha (LEA) set
+		//console.log(data.OGW.cards);
 
 		var ogw = data.OGW.cards;
 		var bfz = data.BFZ.cards;
@@ -93,7 +101,7 @@ app.get('/findDate', function(req, res) {
         });
 });
 
-//find deck all from db 
+//find deck all from db
 app.get('/readDeck', function(req, res) {
 	var thurs = "3_10_2016";
     Deck
