@@ -15,9 +15,13 @@ mongoose.connect(db);
 var Xray = require('x-ray');
 var x = Xray();
 var url = "http://www.cubetutor.com/viewcube/25384";
-x(url, '.columnTitle')(function(err, c) {
-  console.log(c)
+// x(url, '.cardPreview ')(function(err, c) {
+//   console.log(c)
+// });
+x(url, 'body', ['a.cardPreview'])(function(err, c) {
+  console.log(c);
 });
+
 
 var Card = require('./model/card').Card;
 var Deck = require('./model/deck').Deck;
