@@ -15,39 +15,40 @@ var Card = require('./model/card').Card;
 var Deck = require('./model/deck').Deck;
 var Cube = require('./model/cube').Cube;
 
-// don't scrape everytime
-var newScrape = false;
+// don't scrape everytime check if cube exists
 var cube;
-if (newScrape) {
-	// scrape cubetutor
-	var Xray = require('x-ray');
-	var x = Xray();
-	var url = "http://www.cubetutor.com/viewcube/25384";
-	// x(url, '.cardPreview ')(function(err, c) {
-	//   console.log(c)
-	// });
-	x(url, 'body', ['a.cardPreview'])(function(err, c) {
-		// save cube into mongodb
-	    var newCube = new Cube({
-		    cubeName: 'jescube',
-		    date: '8/10/16',
-		    cardList: c
-	    });
-	    newCube.save(function(err) {
-	        if (err) return (err)
-	        console.log("cube saved...")
-    	});
-	});
-}else{
-    Cube
-        .find({"cubeName": 'jescube'})
-        .exec(function(err, doc) {
-            if (err) return (err);
+// look for cube from db or web
+Cube
+    .find({"cubeName": 'jescube'})
+    .exec(function(err, doc) {
+        if (err) return (err);
+        if (doc) {        	
             console.log("cube found!");
             //console.log(doc[0].cardList);
 			cube = doc[0].cardList;
-        });
-};
+        }else{
+		// scrape cubetutor
+		var Xray = require('x-ray');
+		var x = Xray();
+		var url = "http://www.cubetutor.com/viewcube/25384";
+		// x(url, '.cardPreview ')(function(err, c) {
+		//   console.log(c)
+		// });
+		x(url, 'body', ['a.cardPreview'])(function(err, c) {
+			// save cube into mongodb
+		    var newCube = new Cube({
+			    cubeName: 'jescube',
+			    date: '8/10/16',
+			    cardList: c
+		    });
+		    newCube.save(function(err) {
+		        if (err) return (err)
+		        console.log("cube saved...")
+		    	cube = c;
+	    	});
+		});
+        }
+    });
 
 // express dep
 app.use(express.static(__dirname + '/public'));
@@ -83,7 +84,6 @@ app.get('/deck', function(req, res) {
 
 app.get('/fetch', function(req, res) {
 	// scrape data fetched
-	res.json(cube);
 	/*	
 	mtgjson(function(err, data) {
 		if (err) return console.log(err);
@@ -102,6 +102,7 @@ app.get('/fetch', function(req, res) {
 	});
 	*/
 	//res.send("harro world");
+	res.json(cube);
 });
 
 // save the deck from req.body
@@ -140,7 +141,7 @@ app.get('/findDate', function(req, res) {
 //find deck all from db
 app.get('/readDeck', function(req, res) {
 	var date = req.body.date;
-	var testDate = "8_9_2016";
+	var testDate = "8_10_2016";
 	if (!date) { date = testDate };
     Deck
         .find({"dateTime": date})

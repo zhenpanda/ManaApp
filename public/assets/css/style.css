@@ -3,6 +3,11 @@
 	height: 5px;
 	margin: 1px;
 }
+#divder {
+	height:1px;
+	border:none;color:#333;
+	background-color:#333;
+}
 /* Edit Card page */
 #edit-page{
 	background-color: DimGrey;
@@ -30,15 +35,17 @@
 .wCard{
 	background-color: PapayaWhip;
 }
-
+/* cube cards div */
 .card{
     border-style: solid;
     border-width: 1px;
-    width: 185px;
-    height: 30px;
-    padding: 2px;
-    margin: 4px;
+    width: 220px;
+    height: 35px;
+    padding: 4px;
+    margin: 5px;
     color: PapayaWhip;
+    font-size: 14px;
+    font-style: bold;
 }
 /* Deck page */
 #deck-page {
@@ -50,26 +57,22 @@
 	margin: 5px;
 	color: Cornsilk;
 }
-#inputDeckNotes {
 
-}
-#seatNumber {
-/*	width: 100px;*/
-}
 .cards-count{
 	display: inline-block;
 }
 #gap {
-	height: 6px;
+	height: 8px;
 }
 #notes-style {
 	color: darkslategray;
 }
 
 #check-cards {
-	height: 1000px;
+	height: 800px;
 }
 
+/* land button divs */
 .land-button {
 	height: 40px;
 	width: 40px;
@@ -83,4 +86,32 @@
     filter: none;
     -webkit-filter: grayscale(0%);
     opacity: 1;
+}
+#white-mana {
+	background-color: ivory;
+}
+#blue-mana {
+	background-color: deepskyblue;
+	color: ivory;
+}
+#black-mana {
+	background-color: black;
+}
+#red-mana {
+	background-color: firebrick;
+}
+#green-mana {
+	background-color: green;
+}
+.land-card {
+    width: 180px;
+    height: 35px;
+    padding: 4px;
+    margin: 5px;
+	color: LightSeaGreen;
+    font-size: 16px;
+}
+#land-station {
+	margin: auto;
+	height: 35px;
 }

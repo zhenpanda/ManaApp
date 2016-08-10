@@ -20,7 +20,10 @@ var createLandStation = function() {
 		img.appendTo('#land-station');
 		//add click event to mana
 	    $(img).bind("click",function(e) {
-	       console.log($(this).attr('id'));
+	       // console.log($(this).attr('id'));
+	       // add the land
+	       landForm($(this).attr('id'));
+	       setCardsCount("add");
 	    });
 	};
 }
@@ -72,37 +75,52 @@ var insert = function(cardsData) {
     });
 };
 
-var createForm = function (inputCardName, cardData) {
-	// console.log("This is creating a form!");
-	// console.log("For card: " + inputCardName);
-
-	var el = $('<div class="card">'+inputCardName+'</div>');
-	$("#check-cards").append(el);
-};
-
+// create div in DOM of card from search
 var deckForm = function(inputCardName) {
 	//console.log("This is creating a deck!");
 	//console.log("added card: " + inputCardName);
 
 	// buttons on each magnet to remove cards and add mulitple copies
 	// dom checker showing how many cards been added total (use dom to keep count)
-
-	/*
-	Send deck data to mongodb:
-		- array of cards put into the deck, spells and lands
-		- deck creator name
-		- comment
-		- record (win/lost/draw)
-	*/
-
 	var el = $('<div class="card">'+inputCardName+'</div>');
 	$("#deck-info").append(el);
 	//cards can be removed by clicking on to them
 	$( el ).on( "click", function() {
 		$( this ).remove();
+		// remove card count from DOM
 		setCardsCount("sub");
 	});
 
 	var myCards = $( ".card" );
 	//console.log(myCards.length);
 };
+
+// create div in DOM of card from mana symbol buttons
+var landForm = function(inputLandName) {
+	var colorId;
+	var basicLand;
+	if (inputLandName == "whiteMana") {
+		colorId = "white-mana";
+		basicLand = "Plains";
+	}else if (inputLandName == "blueMana") {
+		colorId = "blue-mana";
+		basicLand = "Island";
+	}else if (inputLandName == "blackMana") {
+		colorId = "black-mana";
+		basicLand = "Swamp";
+	}else if (inputLandName == "redMana") {
+		colorId = "red-mana";
+		basicLand = "Mountain";
+	}else if (inputLandName == "greenMana") {
+		colorId = "green-mana";
+		basicLand = "Forest";
+	};
+	var el = $('<div class="land-card" id="'+colorId+'">'+basicLand+'</div>');
+	$("#land-area").append(el);
+	//cards can be removed by clicking on to them
+	$( el ).on( "click", function() {
+		$( this ).remove();
+		// remove card count from DOM
+		setCardsCount("sub");
+	});
+}
