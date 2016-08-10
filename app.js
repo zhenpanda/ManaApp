@@ -109,14 +109,19 @@ app.post('/save', function(req, res) {
 	//console.log(req.body);
 	//console.log(req.body['deckList[]']);
     var newDeck = new Deck({
-	    dateTime: req.body.date,
-	    deckName: req.body.name,
-	    notes: req.body.note,
+	    creator: req.body.creator,
+	    dateTime: req.body.dateTime,
+	    deckName: req.body.deckName,
+	    notes: req.body.notes,
 	    deckList: req.body['deckList[]'],
-	    creator: req.body.maker
+	    wins: req.body.wins,
+	    loses: req.body.loses,
+	    seat: req.body.seat,
+	    version: req.body.version
     });
     newDeck.save(function(err) {
         if (err) return (err)
+        console.log("deck saved...")
         res.send("done");
     });
 });
@@ -138,7 +143,6 @@ app.get('/readDeck', function(req, res) {
 	var date = req.body.date;
 	var testDate = "8_9_2016";
 	if (!date) { date = testDate };
-
     Deck
         .find({"dateTime": date})
         .exec(function(err, doc) {

@@ -51,7 +51,10 @@
 	color: Cornsilk;
 }
 #inputDeckNotes {
-	width: 200px;
+
+}
+#seatNumber {
+/*	width: 100px;*/
 }
 .cards-count{
 	display: inline-block;

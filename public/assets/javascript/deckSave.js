@@ -27,38 +27,43 @@ var deckForm = function(inputCardName) {
 //click event func when Archive Deck button is hit
 var saveDeck = function() {
     $( "#sendDeck" ).on( "click", function() {
+
         var myDeck = $( ".card" );
         var myCards = [];
         for (var c = 0; c < myDeck.length; c++) {
             myCards.push(myDeck[c].innerHTML);
         };
-        console.log(myCards, "deck list array.");
+        //console.log(myCards, "deck list array.");
+
+        //grab seat num 
+        // code here...
 
         //grab input info creator
-        var creator = $( "#deck-creator").val();
-        console.log(creator, "created this deck");
+        var newCreator = $( "#deck-creator").val();
         $( "#deck-creator").val('');
 
         //grab deck name
-        var deckName = $( "#deck-name").val();
-        console.log(deckName, "created this deck");
+        var newDeckName = $( "#deck-name").val();
         $( "#deck-name").val('');
 
         //grab inputn notes
-        var deckNotes = $( "#inputDeckNotes").val();
-        console.log(deckNotes, "deck related notes.");
+        var newDeckNotes = $( "#inputDeckNotes").val();
         $( "#inputDeckNotes").val('');
         
-        //date 
+        //create date 
         var creationDate = makeDate();
-
+        console.log("rdy to made deck obj...")
         //send data
         var dataPack = {
-        	deckList:myCards,
-        	maker:creator,
-        	name:deckName,
-        	note:deckNotes,
-        	date:creationDate
+		    creator: newCreator,
+		    dateTime: creationDate,
+		    deckName: newDeckName,
+		    notes: newDeckNotes,
+		    deckList: myCards,
+		    wins: 1,
+		    loses: 2,
+		    seat: 1,
+		    version: 1
         };
         console.log(dataPack);
 

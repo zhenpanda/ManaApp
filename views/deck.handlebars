@@ -1,67 +1,67 @@
 <div id="deck-page">
 
 	<div class="container-fluid">
-
 			<h2 class="show-text">Deck Archive Page</h2>
 			<hr>
+			<div class="row">
+				{{!-- cards input area --}}
+				<div class="col-sm-7">
+					<div class="ui-widget">
+					    <label for="tags" class="show-text">
+					    	Search Card Name: 
+					    </label>
+					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					    <input id="tags" class="seach-card">
+					</div>
+					<div id="deck-area">
+						<div id="deck-info">
+						</div>
+					</div>
+					<hr>
+					<p class="cards-count">Cards in deck: </p>
+					<p class="cards-count" id="card-count-num">0</p>
+					<hr>
+				</div>
+				<div class="col-sm-1"></div>
+				{{!-- deck infor area --}}
+				<div class="col-sm-4">
+				    <div class="row" id="deck-box">
+					    {{!-- deck info --}}
+						<div class="row">
+						  	<span class="col-sm-2 glyphicon glyphicon-tent" aria-hidden="true"></span>
+						    <label class="col-sm-10 control-label" id="notes-style">Seat Number:</label>
+							<input type="text" id="seatNumber" class="form-control">
+						</div>
+					    <div class="space"></div>
 
-			<div class="ui-widget">
-			    <label for="tags" class="show-text">
-			    	Search Card Name: 
-			    </label>
-			    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			    <input id="tags" class="seach-card">
-			</div>
+					    <div class="row">
+						  	<span class="col-sm-2 glyphicon glyphicon-user" aria-hidden="true"></span>
+						    <label class="col-sm-8 control-label">Deck Creator:</label>
+						    <input class="col-sm-2 form-control" id="deck-creator" placeholder="">
+					    </div>
+					    <div class="space"></div>
 
-			<div id="deck-area">
-				<div id="deck-info">
+					    <div class="row">
+						    <span class="col-sm-2 glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						    <label class="col-sm-8 control-label">Deck Name:</label>
+						    <input class="col-sm-2 form-control" id="deck-name" placeholder="">
+					    </div>
+						<div class="space"></div>
 
+						<div class="row">
+						  	<span class="col-sm-2 glyphicon glyphicon-comment" aria-hidden="true"></span>
+						    <label class="col-sm-10 control-label" id="notes-style">Deck Notes:</label>
+							{{!-- <input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock"> --}}
+							<textarea type="text" id="inputDeckNotes" class="form-control" rows="4" cols="50" placeholder="Write Notes here..."></textarea>
+						</div>
+
+					    <div id="gap"></div>
+					    
+					  	<button type="submit" class="btn btn-primary" id="sendDeck"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> [ Archive Deck ]
+					  	</button>
+				    </div>
 				</div>
 			</div>
-			<hr>
-
-			<p class="cards-count">Cards in deck: 
-				<p class="cards-count">0</p>
-			</p>
-			<hr>
-
-			{{!-- deck --}}
-		    <div class="row" id="deck-box">
-			    {{!-- deck info --}}
-				<div class="row">
-				  	<span class="col-sm-2 glyphicon glyphicon-tent" aria-hidden="true"></span>
-				    <label class="col-sm-10 control-label" id="notes-style">Seat Number:</label>
-					<input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock">
-				</div>
-			    <div class="space"></div>
-			    
-			    <div class="row">
-				  	<span class="col-sm-2 glyphicon glyphicon-user" aria-hidden="true"></span>
-				    <label class="col-sm-8 control-label">Deck Creator:</label>
-				    <input class="col-sm-2 form-control" id="deck-creator" placeholder="">
-			    </div>
-			    <div class="space"></div>
-
-			    <div class="row">
-				    <span class="col-sm-2 glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-				    <label class="col-sm-8 control-label">Deck Name:</label>
-				    <input class="col-sm-2 form-control" id="deck-name" placeholder="">
-			    </div>
-				<div class="space"></div>
-
-				<div class="row">
-				  	<span class="col-sm-2 glyphicon glyphicon-comment" aria-hidden="true"></span>
-				    <label class="col-sm-10 control-label" id="notes-style">Deck Notes:</label>
-					<input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock">
-				</div>
-
-			    <div id="gap"></div>
-			    
-			  	<button type="submit" class="btn btn-primary" id="sendDeck">			    
-			  		<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> [ Archive Deck ]
-			  	</button>
-		    </div>
-
 	</div>
 
 </div>
