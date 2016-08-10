@@ -99,28 +99,104 @@ var deckForm = function(inputCardName) {
 var landForm = function(inputLandName) {
 	var colorId;
 	var basicLand;
+	var divName;
+
 	if (inputLandName == "whiteMana") {
 		colorId = "white-mana";
 		basicLand = "Plains";
+		divName = "#plains-area";
 	}else if (inputLandName == "blueMana") {
 		colorId = "blue-mana";
 		basicLand = "Island";
+		divName = "#island-area";
 	}else if (inputLandName == "blackMana") {
 		colorId = "black-mana";
 		basicLand = "Swamp";
+		divName = "#swamp-area";
 	}else if (inputLandName == "redMana") {
 		colorId = "red-mana";
 		basicLand = "Mountain";
+		divName = "#mountain-area";
 	}else if (inputLandName == "greenMana") {
 		colorId = "green-mana";
 		basicLand = "Forest";
+		divName = "#forest-area";
 	};
+	// attach div to target area
 	var el = $('<div class="land-card" id="'+colorId+'">'+basicLand+'</div>');
-	$("#land-area").append(el);
+	$(divName).append(el);
+	// call landCount 
+	landCount();
+
 	//cards can be removed by clicking on to them
-	$( el ).on( "click", function() {
-		$( this ).remove();
+	$(el).on( "click", function() {
+		$(this).remove();
 		// remove card count from DOM
 		setCardsCount("sub");
+		landCount();
 	});
+};
+
+// count different lands display in DOM
+var	landCount = function() {
+	var plainsCount = 0;
+	var islandCount = 0;
+	var swampCount = 0;
+	var mountainCount = 0;
+	var forestCount = 0;
+
+    var landCountDivs = ["#plains-count", "#island-count", "#swamp-count", "#mountain-count", "#forest-count"];
+    // set land counts by counting DOM elements
+    var myLands = $( ".land-card");
+    for (var l = 0; l < myLands.length; l++) {
+    	//myCards.push(myLands[l].innerHTML);
+    	var land = myLands[l].innerHTML
+    	if (land == "Plains") {
+    		plainsCount++;
+    	}else if (land == "Island") {
+    		islandCount++;
+    	}else if (land == "Swamp") {
+    		swampCount++;
+    	}else if (land == "Mountain") {
+    		mountainCount++;
+    	}else if (land == "Forest") {
+    		forestCount++;
+    	};
+    };
+
+    for (var c = 0; c < landCountDivs.length; c++) {
+    	if (c == 0) {		
+	    	if (plainsCount > 0) {
+			    $(landCountDivs[c]).text(plainsCount);    		
+	    	}else{
+	    		$(landCountDivs[c]).empty(); 
+	    	}
+    	}else if (c == 1) {
+	    	if (islandCount > 0) {
+			    $(landCountDivs[c]).text(islandCount);    		
+	    	}else{
+	    		$(landCountDivs[c]).empty(); 
+	    	}
+    	}else if (c == 2) {
+	    	if (swampCount > 0) {
+			    $(landCountDivs[c]).text(swampCount);    		
+	    	}else{
+	    		$(landCountDivs[c]).empty(); 
+	    	}
+    	}else if (c == 3) {
+	    	if (mountainCount > 0) {
+			    $(landCountDivs[c]).text(mountainCount);    		
+	    	}else{
+	    		$(landCountDivs[c]).empty(); 
+	    	}
+    	}else if (c == 4) {
+	    	if (forestCount > 0) {
+			    $(landCountDivs[c]).text(forestCount);    		
+	    	}else{
+	    		$(landCountDivs[c]).empty(); 
+	    	}
+    	};
+    };
 }
+
+

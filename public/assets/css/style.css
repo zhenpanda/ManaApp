@@ -115,3 +115,24 @@
 	margin: auto;
 	height: 35px;
 }
+
+#plains-count {
+	color: ivory;
+	font-size: 16px;
+}
+#island-count {
+	color: darkblue;
+	font-size: 16px;
+}
+#swamp-count {
+	color: black;
+	font-size: 16px;
+}
+#mountain-count {
+	color: firebrick;
+	font-size: 16px;
+}
+#forest-count {
+	color: green;
+	font-size: 16px;
+}

@@ -16,20 +16,21 @@ var saveDeck = function() {
         //console.log(myCards, "deck list array.");
 
         //grab seat num 
-        // code here...
+        var newSeatNum = $( "#seatNumber").val();
         //grab input info creator
         var newCreator = $( "#deck-creator").val();
-        $( "#deck-creator").val('');
         //grab deck name
         var newDeckName = $( "#deck-name").val();
-        $( "#deck-name").val('');
         //grab inputn notes
         var newDeckNotes = $( "#inputDeckNotes").val();
-        $( "#inputDeckNotes").val('');
-        
+        //grab wins/losses
+        var newWins = $( "#wins").val();
+        var newLosses = $( "#losses").val();
+
         //create date 
         var creationDate = makeDate();
-        console.log("rdy to made deck obj...")
+        //console.log("rdy to made deck obj...")
+
         //send data
         var dataPack = {
 		    creator: newCreator,
@@ -37,9 +38,9 @@ var saveDeck = function() {
 		    deckName: newDeckName,
 		    notes: newDeckNotes,
 		    deckList: myCards,
-		    wins: 1,
-		    loses: 2,
-		    seat: 1,
+		    wins: newWins,
+		    loses: newLosses,
+		    seat: newSeatNum,
 		    version: 1
         };
         //console.log(dataPack);
@@ -49,6 +50,25 @@ var saveDeck = function() {
 		  type: "POST",
 		  url: "/save",
 		  data: dataPack
-		});
+		}).done(function() {
+			console.log("deck saved into db...");
+			//reload everything
+			$( "#deck-info").empty();
+			$( "#plains-area").empty();
+			$( "#island-area").empty();
+			$( "#swamp-area").empty();
+			$( "#mountain-area").empty();
+			$( "#forest-area").empty();
+			landCount();
+			
+	        $( "#seatNumber").val('');
+	        $( "#deck-creator").val('');
+	        $( "#deck-name").val('');
+	        $( "#inputDeckNotes").val('');
+	        $( "#wins").val('');
+	        $( "#losses").val('');
+
+
+        });;
     });
 };

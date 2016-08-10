@@ -22,9 +22,8 @@ Cube
     .find({"cubeName": 'jescube'})
     .exec(function(err, doc) {
         if (err) return (err);
-        if (doc) {        	
-            console.log("cube found!");
-            //console.log(doc[0].cardList);
+        if (doc.length > 0) {        	
+            console.log("cube found! go on...");
 			cube = doc[0].cardList;
         }else{
 		// scrape cubetutor
@@ -122,7 +121,7 @@ app.post('/save', function(req, res) {
     });
     newDeck.save(function(err) {
         if (err) return (err)
-        console.log("deck saved...")
+    	res.send("deck saved...");
     });
 });
 
