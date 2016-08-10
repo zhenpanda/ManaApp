@@ -19,7 +19,7 @@ var Cube = require('./model/cube').Cube;
 var newScrape = false;
 var cube;
 if (newScrape) {
-	// scrape web
+	// scrape cubetutor
 	var Xray = require('x-ray');
 	var x = Xray();
 	var url = "http://www.cubetutor.com/viewcube/25384";
@@ -30,7 +30,7 @@ if (newScrape) {
 		// save cube into mongodb
 	    var newCube = new Cube({
 		    cubeName: 'jescube',
-		    date: '8/9/16',
+		    date: '8/10/16',
 		    cardList: c
 	    });
 	    newCube.save(function(err) {
@@ -68,8 +68,7 @@ var mtgjson = require('mtgjson');
 
 //home test page
 app.get('/', function(req, res) {
-	res
-	.render('index');
+	res.render('index');
 });
 
 //edit cards page
@@ -105,6 +104,7 @@ app.get('/fetch', function(req, res) {
 	//res.send("harro world");
 });
 
+// save the deck from req.body
 app.post('/save', function(req, res) {
 	//console.log(req.body);
 	//console.log(req.body['deckList[]']);
@@ -122,7 +122,6 @@ app.post('/save', function(req, res) {
     newDeck.save(function(err) {
         if (err) return (err)
         console.log("deck saved...")
-        res.send("done");
     });
 });
 

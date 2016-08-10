@@ -1,29 +1,3 @@
-var deckForm = function(inputCardName) {
-	//console.log("This is creating a deck!");
-	//console.log("added card: " + inputCardName);
-
-	// buttons on each magnet to remove cards and add mulitple copies
-	// dom checker showing how many cards been added total (use dom to keep count)
-
-	/*
-	Send deck data to mongodb:
-		- array of cards put into the deck, spells and lands
-		- deck creator name
-		- comment
-		- record (win/lost/draw)
-	*/
-
-	var el = $('<div class="card">'+inputCardName+'</div>');
-	$("#deck-info").append(el);
-	//cards can be removed by clicking on to them
-	$( el ).on( "click", function() {
-		$( this ).remove();
-	});
-
-	var myCards = $( ".card" );
-	//console.log(myCards.length);
-};
-
 //click event func when Archive Deck button is hit
 var saveDeck = function() {
     $( "#sendDeck" ).on( "click", function() {
@@ -73,6 +47,5 @@ var saveDeck = function() {
 		  url: "/save",
 		  data: dataPack
 		});
-
     });
 };

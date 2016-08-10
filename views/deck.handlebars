@@ -7,20 +7,22 @@
 				{{!-- cards input area --}}
 				<div class="col-sm-7">
 					<div class="ui-widget">
-					    <label for="tags" class="show-text">
-					    	Search Card Name: 
-					    </label>
+					    <label for="tags" class="show-text">Search Card Name: </label>
 					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					    <input id="tags" class="seach-card">
 					</div>
+					{{!-- land station --}}
+					<div id="land-station">
+					</div>
+					<hr>
 					<div id="deck-area">
 						<div id="deck-info">
 						</div>
 					</div>
-					<hr>
+					<hr style="height:1px;border:none;color:#333;background-color:#333;" />
 					<p class="cards-count">Cards in deck: </p>
 					<p class="cards-count" id="card-count-num">0</p>
-					<hr>
+					{{!-- <hr> --}}
 				</div>
 				<div class="col-sm-1"></div>
 				{{!-- deck infor area --}}

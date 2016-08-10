@@ -69,3 +69,18 @@
 #check-cards {
 	height: 1000px;
 }
+
+.land-button {
+	height: 40px;
+	width: 40px;
+	margin-top: 2px;
+	margin-right: 4px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: .45;
+}
+.land-button:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+    opacity: 1;
+}
