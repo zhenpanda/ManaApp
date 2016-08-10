@@ -13,7 +13,8 @@ var deckSchema = new Schema({
     }],
     wins: Number,
     loses: Number,
-    archetype: String
+    seat: Number,
+    version: Number
 });
 
 var Deck = mongoose.model('Deck', deckSchema);

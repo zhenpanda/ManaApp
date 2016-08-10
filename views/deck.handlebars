@@ -25,22 +25,35 @@
 			</p>
 			<hr>
 
-		    <div id="deck-box">
-			  	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-			    <label class="col-sm-2 control-label">Deck Creator:</label>
-			    <input class="col-sm-10 form-control" id="deck-creator" placeholder="">
+			{{!-- deck --}}
+		    <div class="row" id="deck-box">
+			    {{!-- deck info --}}
+				<div class="row">
+				  	<span class="col-sm-2 glyphicon glyphicon-tent" aria-hidden="true"></span>
+				    <label class="col-sm-10 control-label" id="notes-style">Seat Number:</label>
+					<input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock">
+				</div>
 			    <div class="space"></div>
-			    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-			    <label class="col-sm-2 control-label">Deck Name:</label>
-			    <input class="col-sm-10 form-control" id="deck-name" placeholder="">
+			    
+			    <div class="row">
+				  	<span class="col-sm-2 glyphicon glyphicon-user" aria-hidden="true"></span>
+				    <label class="col-sm-8 control-label">Deck Creator:</label>
+				    <input class="col-sm-2 form-control" id="deck-creator" placeholder="">
+			    </div>
 			    <div class="space"></div>
-				{{!-- 			    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
-			    <label class="col-sm-2 control-label">Archetype:</label>
-			    <input class="col-sm-10 form-control" id="deck-archetype" placeholder=""> --}}
 
-			  	<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-			    <label class="col-sm-2 control-label" id="notes-style">Deck Notes:</label>
-				<input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock">
+			    <div class="row">
+				    <span class="col-sm-2 glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+				    <label class="col-sm-8 control-label">Deck Name:</label>
+				    <input class="col-sm-2 form-control" id="deck-name" placeholder="">
+			    </div>
+				<div class="space"></div>
+
+				<div class="row">
+				  	<span class="col-sm-2 glyphicon glyphicon-comment" aria-hidden="true"></span>
+				    <label class="col-sm-10 control-label" id="notes-style">Deck Notes:</label>
+					<input type="text" id="inputDeckNotes" class="form-control" aria-describedby="helpBlock">
+				</div>
 
 			    <div id="gap"></div>
 			    
@@ -48,6 +61,7 @@
 			  		<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> [ Archive Deck ]
 			  	</button>
 		    </div>
+
 	</div>
 
 </div>

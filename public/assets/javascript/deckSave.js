@@ -1,33 +1,3 @@
-/*
-var createForm = function (inputCardName, cardData) {
-	console.log("This is creating a form!");
-	console.log("For card: " + inputCardName);
-	for (var e = 0; e < cardData.length; e++) {
-		if (cardData[e].name == inputCardName) {
-			//console.log(cardData[e]);
-				
-			//show the card
-			$("#card-info").show();
-
-			if ( cardData[e].colors ) {
-			    //Do this
-				if (cardData[e].colors[0] == "White") {
-					$( "#card-info" ).addClass( "wCard" );
-				};
-			}else{
-				console.log("is colorless")
-			};
-
-		};
-	};
-};*/
-
-/*
-<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-*/
-
-//
 var deckForm = function(inputCardName) {
 	//console.log("This is creating a deck!");
 	//console.log("added card: " + inputCardName);
@@ -92,7 +62,7 @@ var saveDeck = function() {
         };
         console.log(dataPack);
 
-        //post data
+        //post data to node to save to db
 		$.ajax({
 		  type: "POST",
 		  url: "/save",

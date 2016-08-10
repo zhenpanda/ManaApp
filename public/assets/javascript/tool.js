@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-    console.log('mbhelper');
     //put data in here
     var cardData;
     //ajax get news data function
@@ -15,14 +14,16 @@ $(document).ready(function() {
         });
     }
 
-    //get cards from mongodb store it in DOM
+    //get cards from mongodb store it in DOM to create auto complete
     var insert = function() {
         //testing tags
         //var availableTags = ["ActionScript"];
-        var cardsAry = [];
-        for (var c = 0; c < cardData.length; c++) {
-            cardsAry.push(cardData[c].name);
-        };
+
+        // scrcaped cards into auto complete ary
+        var cardsAry = cardData;
+        // for (var c = 0; c < cardData.length; c++) {
+        //     cardsAry.push(cardData[c].name);
+        // };
 
         //load in cards
         $("#tags").autocomplete({
@@ -37,19 +38,22 @@ $(document).ready(function() {
         $("#tags").keyup(function(e) {
             if(e.keyCode == 13) {
                 //$(this).trigger("enterKey");
-                console.log("you hit enter!");
+                //console.log("you hit enter!");
+                
                 //console.log($("#tags").val());
 
                 //check if element in html exists to load in func
                 if ($("#card-info").length > 0) {
                     //console.log("this is the card's basic info");                
                     //call createForm func with input
+
                     createForm($("#tags").val(), cardData);
-                    console.log("card info")
+                    console.log("card info");
+
                 //check if element in html exists to load in func
                 }; 
                 if ($("#deck-info").length > 0) {
-                    console.log("this is the deck archive page");
+                    //console.log("this is the deck archive page");
 
                     //call deckForm func with input of entered card
                     deckForm($("#tags").val());                 
@@ -59,18 +63,24 @@ $(document).ready(function() {
             }
         });
     };
-
+    
     //get the card data from mtg json
     populate();
     //hide cards at the start of page    
     //$("#card-info").hide();
-
+    
     //build on click
     saveDeck();
+
     //test stuff
     var myDate = makeDate();
     console.log("Todays date:", myDate);
 
+    /*  
     //get deck form db
     read();
+    */
+    
+    console.log('mbhelper loaded...');
+
 });

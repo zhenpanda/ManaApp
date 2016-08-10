@@ -6,40 +6,64 @@ var bodyParser = require('body-parser');
 
 /*Mongoose Connect*/
 var mongoose = require('mongoose');
-var db = 'mongodb://localhost/sealedDB';
+var db = 'mongodb://localhost/cubeDB';
 //var db = 'mongodb://localhost/testDB';
 
 mongoose.connect(db);
-
-// scrape web
-var Xray = require('x-ray');
-var x = Xray();
-var url = "http://www.cubetutor.com/viewcube/25384";
-// x(url, '.cardPreview ')(function(err, c) {
-//   console.log(c)
-// });
-x(url, 'body', ['a.cardPreview'])(function(err, c) {
-  console.log(c);
-});
-
-
+// load models
 var Card = require('./model/card').Card;
 var Deck = require('./model/deck').Deck;
+var Cube = require('./model/cube').Cube;
 
+// don't scrape everytime
+var newScrape = false;
+var cube;
+if (newScrape) {
+	// scrape web
+	var Xray = require('x-ray');
+	var x = Xray();
+	var url = "http://www.cubetutor.com/viewcube/25384";
+	// x(url, '.cardPreview ')(function(err, c) {
+	//   console.log(c)
+	// });
+	x(url, 'body', ['a.cardPreview'])(function(err, c) {
+		// save cube into mongodb
+	    var newCube = new Cube({
+		    cubeName: 'jescube',
+		    date: '8/9/16',
+		    cardList: c
+	    });
+	    newCube.save(function(err) {
+	        if (err) return (err)
+	        console.log("cube saved...")
+    	});
+	});
+}else{
+    Cube
+        .find({"cubeName": 'jescube'})
+        .exec(function(err, doc) {
+            if (err) return (err);
+            console.log("cube found!");
+            //console.log(doc[0].cardList);
+			cube = doc[0].cardList;
+        });
+};
+
+// express dep
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-
+// handlebar dep
 var expressHandlebars = require('express-handlebars');
 app.engine('handlebars', expressHandlebars({
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
-
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+// mtg json lib
 var mtgjson = require('mtgjson');
 
 //home test page
@@ -47,16 +71,21 @@ app.get('/', function(req, res) {
 	res
 	.render('index');
 });
+
 //edit cards page
 app.get('/edit', function(req, res) {
 	res.render('edit');
 });
+
 //save deck page
 app.get('/deck', function(req, res) {
 	res.render('deck');
 });
 
 app.get('/fetch', function(req, res) {
+	// scrape data fetched
+	res.json(cube);
+	/*	
 	mtgjson(function(err, data) {
 		if (err) return console.log(err);
 
@@ -68,15 +97,13 @@ app.get('/fetch', function(req, res) {
 		var block = ogw.concat(bfz);
 
 		//res.send(ogw[0].name);
-		res.json(block);
+
 		// var count = String(ogw.length);
 		// res.send(count);
 	});
+	*/
 	//res.send("harro world");
 });
-
-// app.get('/note', function(req, res) {
-// });
 
 app.post('/save', function(req, res) {
 	//console.log(req.body);
@@ -94,10 +121,11 @@ app.post('/save', function(req, res) {
     });
 });
 
-//find by date
+//find by date route
 app.get('/findDate', function(req, res) {
+	var date = req.body.date;
     Deck
-        .find({"dateTime": "3_10_2016"})
+        .find({"dateTime": date})
         .exec(function(err, doc) {
             if (err) return (err);
             console.log(doc.length);
@@ -107,9 +135,12 @@ app.get('/findDate', function(req, res) {
 
 //find deck all from db
 app.get('/readDeck', function(req, res) {
-	var thurs = "3_10_2016";
+	var date = req.body.date;
+	var testDate = "8_9_2016";
+	if (!date) { date = testDate };
+
     Deck
-        .find({"dateTime": thurs})
+        .find({"dateTime": date})
         .exec(function(err, doc) {
             if (err) return (err);
             console.log(doc.length, "number of decks found!");
