@@ -52,7 +52,8 @@ var saveDeck = function() {
 		  data: dataPack
 		}).done(function() {
 			console.log("deck saved into db...");
-			//reload everything
+			//clear everything
+			$( "#card-count-num").text(0);
 			$( "#deck-info").empty();
 			$( "#plains-area").empty();
 			$( "#island-area").empty();
@@ -60,15 +61,14 @@ var saveDeck = function() {
 			$( "#mountain-area").empty();
 			$( "#forest-area").empty();
 			landCount();
-			
+
 	        $( "#seatNumber").val('');
 	        $( "#deck-creator").val('');
 	        $( "#deck-name").val('');
 	        $( "#inputDeckNotes").val('');
 	        $( "#wins").val('');
 	        $( "#losses").val('');
-
-
         });;
+        
     });
 };

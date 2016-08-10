@@ -75,6 +75,10 @@ app.get('/', function(req, res) {
 app.get('/edit', function(req, res) {
 	res.render('edit');
 });
+//delete deck page
+app.get('/delete', function(req, res) {
+	res.render('delete');
+});
 
 //save deck page
 app.get('/deck', function(req, res) {
@@ -123,6 +127,17 @@ app.post('/save', function(req, res) {
         if (err) return (err)
     	res.send("deck saved...");
     });
+});
+
+// delete the deck from req.body
+app.delete('/delete', function (req, res) {
+    Deck
+        .find({"creator": req.body.name})
+        .remove()
+        .exec(function(err, doc) {
+            if (err) return (err);
+  			res.send('Got a DELETE request');
+        });
 });
 
 //find by date route

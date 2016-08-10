@@ -136,3 +136,23 @@
 	color: green;
 	font-size: 16px;
 }
+#deck-button {
+    width: 180px;
+    height: 35px;
+    padding: 4px;
+    margin: 5px;
+	color: grey;
+    font-size: 16px;
+    background-color: ivory;
+}
+.player-decks {
+    border-style: solid;
+    border-width: 1px;
+    width: 220px;
+    height: 35px;
+    padding: 4px;
+    margin: 5px;
+    color: white;
+    font-size: 14px;
+    font-style: bold;
+}

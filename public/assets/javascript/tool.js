@@ -14,6 +14,8 @@ $(document).ready(function() {
             insert(cardData);
             // setup DOM
             createLandStation();
+            //load decks in from db
+            showDecks();
         });
     }
 
