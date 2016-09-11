@@ -131,13 +131,14 @@ app.post('/save', function(req, res) {
 
 // delete the deck from req.body
 app.delete('/delete', function (req, res) {
-    Deck
-        .find({"creator": req.body.name})
-        .remove()
-        .exec(function(err, doc) {
-            if (err) return (err);
-  			res.send('Got a DELETE request');
-        });
+	console.log(req.body.data, "got deck name.");
+    // Deck
+    //     .find({"creator": req.body.name})
+    //     .remove()
+    //     .exec(function(err, doc) {
+    //         if (err) return (err);
+  		// 	res.send('Got a DELETE request');
+    //     });
 });
 
 //find by date route
@@ -158,7 +159,8 @@ app.get('/readDeck', function(req, res) {
 	var testDate = "8_10_2016";
 	if (!date) { date = testDate };
     Deck
-        .find({"dateTime": date})
+        //.find({"dateTime": date})
+        .find()
         .exec(function(err, doc) {
             if (err) return (err);
             console.log(doc.length, "number of decks found!");

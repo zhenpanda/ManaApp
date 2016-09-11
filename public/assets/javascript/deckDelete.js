@@ -22,13 +22,14 @@ var showDecks = function() {
 				$("#db-decks").append(deck);
 				$(deck).on( "click", function() {
 					$(this).remove();
+					console.log($(this), "grab deck name.");
 					// $.ajax({
 					//   type: "POST",
 					//   url: "/delete",
-					//   data: dataPack
+					//   data: decks[d].creator
 					// }).done(function() {
 					// 	console.log("deck deleted");
-			  		// });;
+			  		// 	});
 				})
 	    	};
 	    });
